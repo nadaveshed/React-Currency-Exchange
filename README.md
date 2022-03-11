@@ -1,12 +1,30 @@
-# Getting Started with Create React App
+# Currency Exchange React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project built with user interface (REACT) backend by an API (NodeJS).
+The project is currency exchange widget.
+
+The API accepts queries from API clients asking to get a quote for exchanging money from one
+currency to another.
+
+## Example API call:
+`curl
+http://localhost:3000/api/quote?from_currency_code=EUR&amount=100&to_currency_code=ILS`
+
+Output:
+`{ “exchange_rate”: 4.5, “currency_code”: “ILS”, “amount”: 450 }`
 
 ## Available Scripts
 
-In the project directory, you can run:
+### `npm install`
+
+##### Download the project to any directory.
+##### start command prompet.
+##### go to src dir.
+##### write `node server.js`
+(server run)
 
 ### `npm start`
+In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
