@@ -6,7 +6,7 @@ The project is currency exchange widget.
 The API accepts queries from API clients asking to get a quote for exchanging money from one
 currency to another.
 
-## Example API call:
+## API call example:
 `curl
 http://localhost:3000/api/quote?from_currency_code=EUR&amount=100&to_currency_code=ILS`
 
