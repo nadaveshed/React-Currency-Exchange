@@ -22,7 +22,7 @@ function App() {
     console.log("convert", input, to, from)
 
     await Axios.get(
-        `http://localhost:3001/api/quote?from_currency_code=${from}&amount=${input}&to_currency_code=${to}`)
+        `http://localhost:3000/api/quote?from_currency_code=${from}&amount=${input}&to_currency_code=${to}`)
         .then((res) => {
           setInfo(res.data.amount);
           console.log("info:", info)
