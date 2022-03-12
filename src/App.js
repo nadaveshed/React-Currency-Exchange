@@ -11,18 +11,19 @@ function App() {
   const [input, setInput] = useState(0);
   let [from, setFrom] = useState("USD");
   let [to, setTo] = useState("ILS");
-  let [options, setOptions] = useState([]);
+  let [options] = useState(['USD', 'EUR', 'ILS', 'GBP', 'AUD', 'CAD', 'RUB', 'CZK', 'KRW', 'INR', 'THB']);
   const [output, setOutput] = useState(0);
 
-  useState(() => {
-    setOptions(['USD', 'EUR', 'ILS', 'GBP', 'AUD', 'CAD', 'RUB', 'CZK', 'KRW', 'INR', 'THB']);
-  }, )
+  function handleChangeUserName(e){
+    if(e.target.value.match("^[a-zA-Z ]*$")!=null) {
+       return this.setState({input: e.target.value});
+    }
+  }
 
-  async function convert() {
-    console.log("convert", input, to, from)
+  function convert() {
 
-    await Axios.get(
-        `http://localhost:3000/api/quote?from_currency_code=${from}&amount=${input}&to_currency_code=${to}`)
+    Axios.get(
+        `http://localhost:3001/api/quote?from_currency_code=${from}&amount=${input}&to_currency_code=${to}`)
         .then((res) => {
           setInfo(res.data.amount);
           console.log("info:", info)
@@ -42,13 +43,17 @@ function App() {
         <div className="heading">
           <h1>Currency converter</h1>
         </div>
-        <div className="container">
-          <div className="left">
-            <h3>Amount</h3>
-            <input type="text"
-                   placeholder="Enter the amount"
-                   onChange={(e) => setInput(e.target.value)} />
+          <div className="container">
+
+          <div className="amount">
+              <h3>Amount</h3>
+              <input type="number" min={0}
+                     placeholder="Enter the amount"
+                     onChange={(e) => setInput(Math.abs(e.target.value))} />
           </div>
+          </div>
+        <div className="container">
+
           <div className="middle">
             <h3>From</h3>
             <Dropdown options={options}

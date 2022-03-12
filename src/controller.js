@@ -3,7 +3,6 @@ const axios = require('axios');
 
 exports.convertCurrency = (req, result) => {
     const apiKey = 'dc565e97227dfd5687a0';
-    console.log(req.header)
     let amount = req.query.amount;
     let from_currency_code = req.query.from_currency_code;
     let to_currency_code = req.query.to_currency_code;
@@ -18,12 +17,8 @@ exports.convertCurrency = (req, result) => {
     axios
         .get(uri,{})
         .then(res => {
-
-            console.log('request: ' + result);
-            console.log(uri);
             try {
                 let jsonObj = res.data;
-                console.log("12345678")
                 let val = jsonObj[query];
                 if (val) {
                     const total = val * parseFloat(amount);
