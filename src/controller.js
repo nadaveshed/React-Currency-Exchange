@@ -37,18 +37,20 @@ exports.convertCurrency = (req, result) => {
                 }
             } catch(e) {
                 console.log("Parse error: ", e);
+                /*
                 return result.sendStatus(200).json({
                     status_code: 0,
                     message: e
                 });
+                */
             }
         })
         .catch(error => {
             console.error("error", error)
-            result.send(error)
+            /* result.send(error)
             return result.sendStatus(400).json({
                 status_code: 0,
                 message: error
-            });
+            });*/
         })
 };
